@@ -1,0 +1,44 @@
+Funções string - Funções de cadeia de caracteres
+
+Ltrim - tira os spaços em branco na frente de um caracter
+Rtrim - tira os espaços em branco no final do caracter
+
+left - seleciona uma quantidade de registro a esquerda
+right - seleciona uma quantidade de registro a direita
+
+concat - concatenar 2 strings ou campo, também pode ser usado o +
+
+substring - pega um pedaço do meu string (nome, posição, numero de casa)
+ex: (2,2,3)
+
+len - devolve a qtd de letras do string
+
+upper - transforma de minuscula / MAIUSCULA
+lower - transforma de MAIUSCULA / minuscula 
+
+replace - substitui uma string por outra
+
+
+SELECT LTRIM('      OLA')
+SELECT RTRIM('OLA      ')
+SELECT CONCAT('OLA ','TUDO BEM') --Concatena
+SELECT 'OLA ' + 'TUDO BEM' --Concatena
+SELECT LEFT('RUA AUGUSTA',3) -- As 3 primeiras letras
+SELECT RIGHT('RUA AUGUSTA',7) --As ultimas 7 letras
+SELECT UPPER('rua augusta')  -- escreve minusculo
+SELECT LOWER('RUA AUGUSTA')  -- Escreve maiusculo
+SELECT REPLACE('R. AUGUSTA','R.','RUA') -- subistitui um valor
+SELECT SUBSTRING('RUA AUGUSTA', 1, 3)
+SELECT LEN('RUA AUGUSTA')  -- mostra tamanho do campo
+SELECT SUBSTRING('RUA AUGUSTA', 2, 4)
+SELECT FROM [PRODUTO]
+WHERE SUBSTRING([DESCRIÇÃO],1,7) = 'Vanessa'
+
+SELECT * FROM [TABELA DE CLIENTES]
+SELECT CONCAT(NOME, ' (', CPF, ') ') FROM [TABELA DE CLIENTES]
+
+
+
+mais funções no link
+https://docs.microsoft.com/pt-br/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-ver15
+
