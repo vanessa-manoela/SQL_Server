@@ -1,0 +1,42 @@
+funções matematicas e converções de dados
+
+ceiling - trás o maior numero interio, arredonda pra cima
+floor - trás o menor numero interio, arredonda pra baixo
+rand () - gera numero aleatorio, pode ser informado um valor ou não.
+round - arredonda o numero
+tem varias outras
+
+SELECT CEILING(12.333223)
+SELECT FLOOR(12.333223)
+SELECT RAND()
+SELECT ROUND(12.33323323, 2)
+SELECT * FROM [ITENS NOTAS FISCAIS]
+SELECT [QUANTIDADE], [PREÇO], ROUND(([QUANTIDADE] * [PREÇO]),1) FROM [ITENS NOTAS FISCAIS]
+
+
+
+
+
+funções de conversão
+
+cast - usado como padrão SQL
+
+convert- especifico do SQL SERVER
+select convert(varchar, getdate(), 101)
+select convert(decimal(10,3), 193,57)
+
+--concatenando tipos de dados diferente
+select 'preço' + [nome_produto] + 'é' + convert(varchar, [preco_lista])
+from tabela_cliente 
+
+SELECT CONVERT(VARCHAR, GETDATE(), 101)
+SELECT CONVERT(VARCHAR, GETDATE(), 113)
+SELECT CONVERT(VARCHAR, GETDATE(), 130)
+SELECT CONVERT(decimal(10,5), 193.57)
+SELECT * FROM [TABELA DE PRODUTOS]
+
+SELECT 'O preço do produto ' + [NOME DO PRODUTO] + ' é ' +  [PREÇO DE LISTA]
+FROM [TABELA DE PRODUTOS]
+
+SELECT 'O preço do produto ' + [NOME DO PRODUTO] + ' é ' +  CONVERT(VARCHAR, [PREÇO DE LISTA])
+FROM [TABELA DE PRODUTOS]
