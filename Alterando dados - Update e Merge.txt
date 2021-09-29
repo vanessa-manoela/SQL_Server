@@ -1,0 +1,115 @@
+Alterando dados na tabela
+
+UPDATE TBL_PRODUTO
+SET [PREÇO LISTA] = 5
+WHERE CODIGO = '1234'
+
+
+UPDATE TBLPRODUTO
+SET SABOR = 'LARANJA', EMBALAGEM = 'LATA'
+WHERE CODIGO = '7894'
+
+UPDATE TBL_PRODUTO
+SET [PREÇO LISTA] = [PREÇO LISTA] * 1.10   --com operações matematicas
+WHERE SABOR = 'Maracuja'
+
+UPDATE TABELA_ACORDO
+SET A_VISTA = CASE WHEN A_VISTA = 'no' THEN '0'
+		   WHEN A_VISTA = 'si' THEN '1'
+		   ELSE A_VISTA
+		   END
+
+
+UPDATE TABELA_ACORDO
+SET 	ID_DEVEDOR = TBL_CONTRATO.ID_DEVEDOR
+	ID_CONTRATO = TBL_CONTRATO.ID_CONTRATO
+	ID_PARCELA = TBL_PARCELA.ID_PARCELA
+
+FROM TABELA_ACORDO
+INNER JOIN TBL_CONTRATO ON TABELA_ACORDO.ID_OPERACAO = TBL_CONTRATO.NUMERO
+INNER JOIN TBL_PARCELA ON TBL_CONTRATO.ID_CONTRATO = TBL_PARCELA.ID_CONTRATO
+WHERE TABELA_ACORDO.ID_CONTRATO  IS NULL -- ou is not null
+
+begin tran
+update [tabela cliente] set 
+endereço = 'R. Jorge Emilio 23',
+Bairro = 'Santo Amaro', 
+Cidade = 'São Paulo',
+Estado = 'SP',
+CEP = '8833223'
+where cpf = 19290992743 
+
+rollback
+
+commit
+
+
+
+begin tran
+update [Cliente]
+set [volume de compra] = volume de compra * 1.2
+where Estado = 'RJ'
+
+commit
+
+
+Update buscando de outra tabela
+
+select B.[codigo do Produto], B.[preco de lista], a.[codigo], a.[preco lista] 
+from Produto A inner join banco.dbo.[tabela Produto] B
+on A.codigo = B.[codigo do produto]
+where A.codigo = '15205'
+
+
+begin tran
+update A 
+set a.[preco lista] = B.[preco de lista]
+from Produto A inner join banco.dbo.[tabela Produto] B
+on A.codigo = B.[codigo do produto]
+where A.codigo = '15205'
+
+commit
+
+select A.CPF from [dbo.] Clientes A
+inner join [dbo]. Vendedores B
+on A.Bairro = B.Bairro
+
+update A
+set A.[volume de compra] = A.[volume de compra] * 1.30
+from banco.[dbo.] Clientes A
+inner join banco.[dbo]. Vendedores B
+on A.Bairro = B.Bairro
+
+
+Merger - atualização de uma tabela para a outra, comando espacifico do sql server
+update é melhor
+
+
+select b.[codigo do produto, b.[preço de lista], a.[codigo], a.[preço lista]
+from [produtos] a inner join banco.[dbo].[tabela de produtos] b
+on a.[codigo] = b.[codigo do produto]
+where [codigo do produto] = '156433'
+
+update banco.dbo.[tabela de produtos]
+set [preço de lista] = 8
+where [codigo] = '156433'
+
+merge into [produtos] a
+using banco.dbo.[tabela de produtos] a
+on a.[codigo] = b.[codigo do produto]
+and a.[codigo] = '156433'
+when matched then
+update set a.[preço lista] =  b.[preço de lista];
+
+select * from clientes a
+inner join banco.dbo.[devedores] b
+on a.bairro = b.bairro
+
+merge into [clientes] a
+using banco.dbo.[vendedores] b
+on a.bairro = b.bairro
+when matched then
+update set a.[volume de compra] = a.[volume de compra] * 1.30;
+
+
+
