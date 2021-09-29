@@ -1,0 +1,31 @@
+ constraint para colocar restrição em tabela
+
+CREATE TABLE TBL_CHECK (
+ID INT  NOT NULL,
+NOME VARCHAR (20) NULL,
+IDADE INT NULL,
+CIDADE VARCHAR (20) NULL,
+CONSTRAINT CHK_PESSOA CHECK (IDADE >= 18 ))
+
+ esta situação o insert passaria
+INSERT INTO TBL_CHECK (ID, NOME, IDADE, CIDADE) VALUES (1 'JOÃO', 19, 'RIO DE JANEIRO')
+
+nesta situação o insert daria erro de integridade / restrição
+INSERT INTO TBL_CHECK (ID, NOME, IDADE, CIDADE) VALUES (2 'PEDRO', 20, 'SÃO PAULO')
+
+
+a restrição pode ter condição dupla
+
+CREATE TABLE TBL_CHECK2 (
+ID INT  NOT NULL,
+NOME VARCHAR (20) NULL,
+IDADE INT NULL,
+CIDADE VARCHAR (20) NULL,
+CONSTRAINT CHK_PESSOA2 CHECK (IDADE >= 18 AND CIDADE = 'RIO E JANEIRO' ))
+
+nesta situação o insert funciona
+INSERT INTO TBL_CHECK2 (ID, NOME, IDADE, CIDADE) VALUES ( 'JOÃO', 19, 'RIO DE JANEIRO')
+
+nesta situação apesar da idade sr compativel a cidade não é por isso o insert não funciona
+INSERT INTO TBL_CHECK2 (ID, NOME, IDADE, CIDADE) VALUES ( 'PEDRO', 20, 'SÃO PAULO')
+
