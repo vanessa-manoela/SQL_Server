@@ -1,0 +1,51 @@
+funções do tipo data
+
+time - mostra a hora
+date - mostra data
+smalldate - data, hora e segundo concatenado
+datetime - data, hora e segundo concatenado (vai até nanosegundo)
+datetime2 - data, hora e segundo concatenado (nanosegundo mais longo)
+datetimeoffset - leva em consideração ofuso horario
+
+sysdatetime - retorna data do computador
+getdate -  retorna data do computador
+datename - (moth) tras com caractere
+datepart - tras os valores em numeros inteiros
+day, moth, year, valores em numeros inteiros
+datefromparst
+datdiff - data limite que são cruzados entre duas data especificas
+ex: calcula idade com o get date e data nascimento
+
+dateadd - acrescentar/ somar valor a data
+isdate - verifica se pode ser data
+
+
+SELECT SYSDATETIME()
+SELECT SYSDATETIMEOFFSET()
+SELECT SYSUTCDATETIME()
+SELECT CURRENT_TIMESTAMP
+SELECT GETDATE()
+SELECT GETUTCDATE()
+SELECT DATENAME(YEAR,GETDATE())
+SELECT DATENAME(MICROSECOND,GETDATE())
+SELECT DATENAME(MINUTE,GETDATE())
+SELECT DATENAME(MONTH,GETDATE())
+SELECT DATEPART(MONTH,GETDATE())
+SELECT DAY(GETDATE())
+SELECT YEAR(GETDATE())
+SELECT DATEFROMPARTS(2015,9,1)
+SELECT DATENAME(MONTH,DATEFROMPARTS(2015,9,1))
+SELECT DATETIME2FROMPARTS(2015,9,1,13,12,11,120,4)
+SELECT DATEDIFF(MONTH, DATEFROMPARTS(2015,9,1), GETDATE())
+SELECT DATEADD(MONTH, 5, GETDATE())
+SELECT ISDATE('2018-01-01')
+SELECT ISDATE('2018-25-28')
+SELECT * FROM [NOTAS FISCAIS]
+
+SELECT [DATA], CONCAT(DATENAME(DAY, [DATA]), ' ', DATENAME(MONTH, [DATA]), ' ', DATENAME(YEAR, [DATA]))
+FROM [NOTAS FISCAIS]
+
+
+
+
+
