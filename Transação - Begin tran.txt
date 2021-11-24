@@ -1,0 +1,28 @@
+trasação no sql server: uma unidade lógica de processamento que visa preservar a intregridade
+e consisitência dos dados.
+
+begin transaction
+
+rollback
+
+commit
+
+begin transaction: cria um ponto de estado do banco de dados (congela)
+
+commit: confirma todas as operações ente o begin transaction e o comando commit.
+Todos os Inserts, updates ou deletes serão confirmados e gravados na base.
+
+rollback: tudo o que foi feito entre o bein tran e o rollback será desprezado e os dados
+voltarão ao status antes do begin ser executado.
+
+
+
+
+begin tran
+
+update [vendedores]
+set [comissão] = [comissão] * 1.15
+
+rollback
+
+commit
