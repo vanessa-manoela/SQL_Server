@@ -1,0 +1,33 @@
+Junções de tabelas e consultas
+
+-- INNER JOIN, mostra todos os campos relacionados das duas tabelas.
+
+-- LEFT JOIN, tras tudo da tabela do lado esquerdo e o relacionado do lado direito.
+
+-- RIGHT JOIN, tras tudo da tabela do lado direito e o relacionamento do lado esquerdo.
+
+-- FULL JOIN, mostra todos os campos das duas tabelas, relacionados ou não.
+
+-- CROSS JOIN, possibilita uma analise combinatoria, monta um plano cartesiano. 
+a sintaxe só usa , (não usa on)
+
+-- UNION - junta o resultado aplicando distinct
+
+-- UNION ALL - os registros duplicados se repete
+
+--SUB CONSULTAS - a primeira consulta retorna um resultado que pode ser usado em outra consulta
+usando in ou select/ where (fazendo papel de having)
+o resultado dele é como se fosse uma nova tabela ou uma tabela temporaria.
+
+select nova.cpf, nova.Qtd
+from (select cpf, count(*) as Qtd from [nota fiscal]
+where year(data) = '2016'
+group by cpf) as nova
+
+where nova.Qtd > 2000
+
+
+
+--VIEWS - a view pode ser criada em com script ou assistente, na opção na opção 
+exibições / exibições do sistema
+podemos realizae qualquer query por meio de views

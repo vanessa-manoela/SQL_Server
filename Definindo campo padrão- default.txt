@@ -1,0 +1,15 @@
+Criando tabela e definindo campos padrão - defaut
+
+CREATE TABLE TBL_PADRAO (
+ID INT IDENTITY (1,1) NOT NULL,
+DESCRITOR VARCHAR (20) NULL,
+ENDERECO VARCHAR (200) NULL,
+CIDADE VARCHAR (50) DEFAULT ('Barueri')
+DATA_CRIACAO DATE DEFAULT GETDATE())
+
+INSERT INTO TBL_PADRAO (DESCRITOR, ENDERECO) VALUES ('CLIENTE 1', 'RUA DA GARÇA')
+
+apesar de ter definido apenas descritor e endereço os campos id, cidade e data também
+serão iseridos pois existe um padrão definido.
+
+Esse padrão pode ser alterado a qualquer momento altravés de um alter table nome da tabela

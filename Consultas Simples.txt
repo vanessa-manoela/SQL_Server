@@ -1,0 +1,99 @@
+
+SELECT * FROM [TABELA DE CLIENTES]
+
+Filtros e consultas de dados
+
+
+- selecão de alguns ou todos os campos
+
+SELECT [CPF], [NOME] FROM [TABELA DE CLIENTES]
+
+- alias
+SELECT [CPF] AS IDENTIFICADOR, [NOME] AS CLIENTE 
+FROM [TABELA DE CLIENTES]
+
+
+- filtro, where campo = 'string' ou valores
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [CODIGO DO PRODUTO] = '1000889'
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [SABOR] = 'Uva'
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [PREÇO DE LISTA] = 4.555
+
+
+- simbolos >, >=, < ou <= <> (também pode ser usado para string, faz a ordemnação alfabetica)
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [PREÇO DE LISTA] > 10
+
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [PREÇO DE LISTA] < 10
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [PREÇO DE LISTA] >= 4.555
+
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE EMBALAGEM <= 'Lata'
+
+SELECT * FROM [TABELA DE PRODUTOS] 
+WHERE [PREÇO DE LISTA] <> 4.555
+
+
+- filtro com funções, year, month, day
+where year(campo) = 'data'
+
+SELECT * FROM [TABELA DE CLIENTES] 
+WHERE [DATA DE NASCIMENTO] = '1995-09-11'
+
+SELECT * FROM [TABELA DE CLIENTES] 
+WHERE YEAR([DATA DE NASCIMENTO]) < 1995
+
+
+
+- Consultas condicionais, AND, OR e NOT, IN, BETWEEN
+
+- LIKE 'abc%', '%abc', '%abc%', pode ser combinado com outras condiçoes
+
+
+Melhorando Apresentações
+
+- DISTINCT, pode ser com 1 ou vários campos
+
+- TOP - limita quantidade de visualização
+select distinct top 10...
+
+- ORDER BY, ordenação crescente e decrescente
+order by campo1 desc, campo2 asc, ordenação de varios campos
+
+- GROUP BY, agrupamento do resultado
+
+- funções de agregação, SUM. AVG, MAX, MIN, COUNT(*)
+
+- HAVING, resultado de agrupamento
+
+- CASE WHEN - THEN, condição de classificação
+
+SELECT coluna1,
+CASE 
+WHEN coluna2 >= 12 THEN 'PRODUTO CARO'
+WHEN coluna2 >= 7 AND coluna2 < 12 THEN 'PRODUTO EM CONTA'
+ELSE 'PRODUTO BARATO' END,
+AVG(coluna2)
+FROM
+tabela1
+GROUP BY coluna1,
+CASE WHEN coluna2 >= 12 THEN 'PRODUTO CARO'
+WHEN coluna2  >= 7 AND coluna2 < 12 THEN 'PRODUTO EM CONTA'
+ELSE 'PRODUTO BARATO' END
+
+
+SELECT YEAR(DATA), COUNT(*) FROM tabela1
+GROUP BY YEAR(DATA)
+
+

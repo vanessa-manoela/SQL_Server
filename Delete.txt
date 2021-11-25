@@ -1,0 +1,30 @@
+Apagando dados de uma tabela com delete
+
+select * from [prduto]
+where substring([descrition],1,15) = 'sabor dos alpes'
+
+delete from [produto
+where [codigo] = '456988'
+
+select * from [produto]
+where [tamanho] = '1 litro' and substring([descrition],1,15) = 'sabor dos alpes'
+
+delete from [produto]
+where [tamanho] = '1 litro' and substring([descrition],1,15) = 'sabor dos alpes'
+
+select [codigo do produto] from banco.dbo.[[tabela de produtos]
+
+select * from [ produtos]
+where [codigo] not in (select [codigo do produto] from banco.dbo.[[tabela de produtos])
+
+delete from [ produtos]
+where [codigo] not in (select [codigo do produto] from banco.dbo.[[tabela de produtos])
+
+
+SELECT A.NÚMERO FROM [NOTAS] A
+INNER JOIN [CLIENTES] B ON A.[CPF] = B.[CPF] 
+WHERE B.[IDADE] < 18
+
+delete a from [NOTAS] A
+INNER JOIN [CLIENTES] B ON A.[CPF] = B.[CPF] 
+WHERE B.[IDADE] < 18

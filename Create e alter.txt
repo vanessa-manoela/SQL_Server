@@ -1,0 +1,98 @@
+
+--criando um banco de dados
+
+CREATE DATABASE LOJA_01
+
+
+-- criando um novo banco, passando paramentros do local onde os arquivos de dados e log serão criados e o tamanho do BD.
+
+
+CREATE DATABASE LOJA_02
+ON ( NAME = LOJA_VENDAS_DAT, -- nome do arquivo físico que vai ter os dados
+FILENAME = 'C:\TEMP\VENDAS\LOJA_02.mdf', -- diretorio que obanco será criado, MDF é a extensão do arquivo de banco de dados do SQL Server
+SIZE = 10, MAXSIZE = 50, FILEGROWTH = 5 ) --  tamanho inicial, tamanho maximo, de quanto em quanto ele vai crescer 
+
+LOG ON ( NAME = LOJAS_VENDAS_LOG,  --nome do arquivo de log
+FILENAME = 'C:\TEMP\DATA\LOJA_02.ldf', -- diretorio que vai ser criado
+SIZE = 5MB, MAXSIZE = 25MB, FILEGROWTH = 5MB ) tamanhos min, max e crescimento
+
+
+DROP DATABASE LOJA_02
+
+ Quando você for excluir um banco pelo assistente, é desejável escolher a opção Fechar conexões existentes.
+
+
+CREATE TABLE [TABELA DE CLIENTES](
+    [CPF] [VARCHAR] (11) ,
+    [NOME] [VARCHAR] (100) ,
+    [ENDERECO 1] [VARCHAR] (150) ,
+    [ENDERECO 2] [VARCHAR] (150) ,
+    [BAIRRO] [VARCHAR] (50) ,
+    [CIDADE] [VARCHAR] (50) ,
+    [ESTADO] [VARCHAR] (2) ,
+    [CEP] [VARCHAR] (8) ,
+    [DATA DE NASCIMENTO] [DATE],
+    [IDADE] [SMALLINT],
+    [SEXO] [VARCHAR] (1) ,
+    [LIMITE DE CREDITO] [MONEY] ,
+    [VOLUME DE COMPRA] [FLOAT] ,
+    [PRIMEIRA COMPRA] [BIT]
+)
+
+
+
+DROP TABLE [dbo].[TABELA DE CLIENTE]
+
+
+
+CREATE TABLE [TABELA PRODUTOS]
+[CODIGO DO PRODUTO] [INT],
+[NOME DO PRODUTO] [VARCHAR] (50),
+[EMBALAGEM] [VARCHAR] (20),
+[TAMANHO] [VARCHAR] (20),
+[SABOR] [VARCHAR] (20),
+[PREÇO DE LISTA] [MONEY]
+
+)
+
+
+INSERT INTO [TABELA DE PRODUTOS]
+([CODIGO DO PRODUTO], [NOME DO PRODUTO], [EMBALAGEM], [TAMANHO], [SABOR], [PREÇO DE LISTA])
+
+VALUES('1040107','Light - 350 ml - Melancia', 'Lata', '350 ml', 'Melancia', 4.56)
+
+
+-- adicione regra para não permitir campos receber null
+
+ALTER TABLE [TABELA DE PRODUTOS]
+ALTER COLUMN {CODIGO DO PRODUTO]
+VARCHAR(10) NOT NULL
+
+ALTER TABLE [TABELA DE CLIENTES]
+ALTER COLUMN [CPF]
+VARCHAR(11) NOT NULL
+
+
+-- atualize os dados
+UPDATE [TABELA DE PRODUTOS] 
+SET [EMBALAGEM] = 'Lata',
+[PREÇO DE LISTA] = 2.46
+WHERE [CODIGO DO PRODUTO] = '544931'
+
+-- exclua dados
+DELETE FROM [TABELA DE PRODUTOS]
+WHERE [CODIGO DO PRODUTO] = '1088216'
+
+
+-- crie chave para evitar duplicdade
+
+ALTER TABLE [TABELA DE PRODUTOS]
+ADD CONSTRAINT PK_PRODUTOS 
+PRIMARY KEY CLUSTERED ([CODIGO DO PRODUTO])
+
+
+ALTER TABLE [TABELA DE CLIENTES]
+ADD CONSTRAINT PK_CLIENTES
+PRIMARY KEY CLUSTERED ([CPF])
+
+
